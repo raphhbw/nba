@@ -1,4 +1,4 @@
-pandas
+epandas
 numpy
 matplotlib
 seaborn
@@ -6,4 +6,5 @@ jupyter
 jupyterlab
 scipy
 requests
+selenium
 beautifulsoup
