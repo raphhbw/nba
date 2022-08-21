@@ -13,7 +13,7 @@ args = parser.parse_args()
 
 teams = pd.read_csv('../teams.csv')
 
-period = teams[(teams.Year >= args.f) & (teams.Year < args.t)]
+period = teams[(teams.Year >= int(args.f)) & (teams.Year < int(args.t))]
 
 # Get rid of * after teams that made the playoffs (data not interesting for this study)
 new_period = period.copy()
@@ -30,10 +30,10 @@ data['W/L%'] = data.W / data.GP
 data = data.sort_values('W/L%')
 
 fig, ax = plt.subplots()
-ax.set_title('W/L%-per-teams from {}-{}'.format(args.f, args.t))
+ax.set_title('W/L%-per-teams from {}-{}'.format(int(args.f), int(args.t)))
 ax.barh(data[data['W/L%'] < 0.5].index,data[data['W/L%'] < 0.5]['W/L%'], color = 'r', label = 'W/L% < 0.5')
 ax.barh(data[data['W/L%'] >= 0.5].index,data[data['W/L%'] >= 0.5]['W/L%'], color = 'b', label = 'W/L% $\geq$ 0.5')
 ax.legend()
 plt.tight_layout()
-# plt.savefig('W%-per-teams-{}-{}.pdf'.format(args.f, args.t), bbox_inches = 'tight')
+# plt.savefig('W%-per-teams-{}-{}.pdf'.format(int(args.f), int(args.t)), bbox_inches = 'tight')
 plt.show()
