@@ -31,9 +31,13 @@ data = data.sort_values('W/L%')
 
 fig, ax = plt.subplots()
 ax.set_title('W/L%-per-teams from {}-{}'.format(int(args.f), int(args.t)))
-ax.barh(data[data['W/L%'] < 0.5].index,data[data['W/L%'] < 0.5]['W/L%'], color = 'r', label = 'W/L% < 0.5')
-ax.barh(data[data['W/L%'] >= 0.5].index,data[data['W/L%'] >= 0.5]['W/L%'], color = 'b', label = 'W/L% $\geq$ 0.5')
+b1 = ax.barh(data[data['W/L%'] < 0.5].index,data[data['W/L%'] < 0.5]['W/L%'], color = 'r', label = 'W/L% < 0.5')
+b2 = ax.barh(data[data['W/L%'] >= 0.5].index,data[data['W/L%'] >= 0.5]['W/L%'], color = 'b', label = 'W/L% $\geq$ 0.5')
 ax.legend()
+
+ax.bar_label(b1, fmt='%.2f')
+ax.bar_label(b2, fmt='%.2f')
+
 plt.tight_layout()
 # plt.savefig('W%-per-teams-{}-{}.pdf'.format(int(args.f), int(args.t)), bbox_inches = 'tight')
 plt.show()
