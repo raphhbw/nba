@@ -1,9 +1,0 @@
-pandas
-numpy
-matplotlib
-seaborn
-jupyter
-jupyterlab
-scipy
-requests
-beautifulsoup
