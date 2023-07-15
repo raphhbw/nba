@@ -8,3 +8,4 @@ scipy
 requests
 selenium
 beautifulsoup4
+lxml
